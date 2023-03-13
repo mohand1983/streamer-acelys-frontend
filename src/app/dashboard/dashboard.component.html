@@ -6,6 +6,6 @@
 
 <div class="row">
   <ng-container *ngFor="let tile of tiles">
-    <app-tile></app-tile>
+    <app-tile *ngIf="isAdmin || tile.title !== 'Parameters'"></app-tile>
   </ng-container>
 </div>

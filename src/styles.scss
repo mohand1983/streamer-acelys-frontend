@@ -61,7 +61,7 @@ $cols: 12;
 .row {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 1em;
 
   .col {

@@ -6,7 +6,7 @@
 $cols: 12;
 
 @mixin col-basis($basis) {
-  flex : $basis / $cols;
+  grid-column: span $basis;
 }
 
 @mixin col-x-list($col-name) {
@@ -59,16 +59,11 @@ $cols: 12;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: .5em;
 
   .col {
-    flex-basis: 100%;
-    margin-right: .5em;
-    margin-left: .5em;
-
     &.xs-hidden {
       display: none;
     }

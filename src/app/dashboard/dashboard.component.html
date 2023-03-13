@@ -1,0 +1,11 @@
+<div class="row">
+  <span (click)="isAdmin = !isAdmin">
+    {{ isAdmin ? 'Admin' : 'User'}}
+  </span>
+</div>
+
+<div class="row">
+  <ng-container *ngFor="let tile of tiles">
+    <app-tile></app-tile>
+  </ng-container>
+</div>

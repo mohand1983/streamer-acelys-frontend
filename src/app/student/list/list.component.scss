@@ -1,0 +1,33 @@
+$line-color: rgba(0, 20, 200, 1);
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  caption {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: left;
+  }
+  thead {
+    height: 3em;
+    border-bottom: solid 1px $line-color;
+
+    tr {
+      th {
+        text-align: left;
+        font-weight: 1.2em;
+        font-weight: bold;
+      }
+    }
+  }
+  tbody {
+    tr {
+      height: 2em;
+      border-bottom: solid 1px $line-color;
+      &:nth-child(odd) {
+        background-color: lighten($line-color, 50%);
+      }
+    }
+  }
+}

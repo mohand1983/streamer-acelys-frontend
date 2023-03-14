@@ -10,6 +10,8 @@ import { StudentService } from '../services/student.service';
 })
 export class ListComponent implements OnInit {
 
+  public students: IStudent[] = []
+
   constructor(
     private _studentService: StudentService
   ) { }
@@ -19,7 +21,7 @@ export class ListComponent implements OnInit {
       .pipe(
         take(1)
       ).subscribe((students: IStudent[]) => {
-        console.log(`Got ${students.length} students`)
+        this.students = students
       })
   }
 

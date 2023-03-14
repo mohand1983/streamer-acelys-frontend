@@ -14,6 +14,7 @@ export class ListComponent implements OnInit {
   public byIdSortOrder: number = -1
   public byLastNameSortOrder: number = 1
   public sortDefault: string = 'id'
+  public checkUncheckAll: boolean = false
 
   constructor(
     private _studentService: StudentService
@@ -39,4 +40,19 @@ export class ListComponent implements OnInit {
     this.byLastNameSortOrder = this.byLastNameSortOrder * -1
     this.sortDefault = 'lastName'
   }
+
+  public onSelectStudent(student: IStudent): void {
+    if (student.isSelected)
+      this.checkUncheckAll = false
+    else {
+      this.checkUncheckAll = this.students.filter((s: IStudent) => s.isSelected).length + 1 === this.students.length
+    }
+  }
+
+  public onCheckUncheckAll(): void {
+    this.students = this.students.map((s) => {
+      return {...s, isSelected: !this.checkUncheckAll}
+    })
+  }
+
 }

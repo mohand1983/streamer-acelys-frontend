@@ -16,12 +16,13 @@ table {
     tr {
       th {
         text-align: left;
-        font-weight: 1.2em;
+        font-size: 1.2em;
         font-weight: bold;
-
+        &.sorted {
+          color: $line-color;
+        }
         span {
           display: inline-block;
-          width: 2em;
           &.down-sort {
             transform: rotate(90deg);
           }

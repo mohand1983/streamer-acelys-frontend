@@ -11,7 +11,7 @@ import { StudentService } from '../services/student.service';
 export class ListComponent implements OnInit {
 
   public students: IStudent[] = []
-  public byIdSortOrder: number = 1
+  public byIdSortOrder: number = -1
   public byLastNameSortOrder: number = 1
   public sortDefault: string = 'id'
 

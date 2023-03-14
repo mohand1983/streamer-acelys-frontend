@@ -16,7 +16,8 @@ export class DashboardComponent implements OnInit {
    */
   public isAdmin: boolean = true
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
     this.tiles.push({
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
     {
       title: 'Students',
       summary: 'Add, remove, view students',
-      action: ['dashboard']
+      action: ['/', 'student', 'list']
     },
     {
       title: 'Courses',
@@ -35,6 +36,4 @@ export class DashboardComponent implements OnInit {
       action: ['dashboard']
     })
   }
-
-  public onClick(object: any): void {}
 }

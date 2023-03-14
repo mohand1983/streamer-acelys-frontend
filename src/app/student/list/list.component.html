@@ -7,8 +7,16 @@
   <caption>Students</caption>
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Lastname</th>
+      <th (click)="byId()">
+        <span class="down-sort" *ngIf="sortDefault === 'id' && byIdSortOrder === 1">&gt;</span>
+        Id
+        <span class="up-sort" *ngIf="sortDefault === 'id' && byIdSortOrder === -1">&lt;</span>
+      </th>
+      <th (click)="byLastname()">
+        <span class="down-sort" *ngIf="sortDefault === 'lastName' && byLastNameSortOrder === 1">&gt;</span>
+        Lastname
+        <span class="down-sort" *ngIf="sortDefault === 'lastName' && byLastNameSortOrder === -1">&gt;</span>
+      </th>
       <th>Firstname</th>
       <th>Email</th>
     </tr>

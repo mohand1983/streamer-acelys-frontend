@@ -18,6 +18,18 @@ table {
         text-align: left;
         font-weight: 1.2em;
         font-weight: bold;
+
+        span {
+          display: inline-block;
+          width: 2em;
+          &.down-sort {
+            transform: rotate(90deg);
+          }
+
+          &.up-sort {
+            transform: rotate(90deg);
+          }
+        }
       }
     }
   }

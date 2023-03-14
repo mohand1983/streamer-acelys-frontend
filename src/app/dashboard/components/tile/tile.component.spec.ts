@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { TileComponent } from './tile.component';
 
@@ -8,6 +10,12 @@ describe('TileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
+      providers: [
+
+      ],
       declarations: [ TileComponent ]
     })
     .compileComponents();

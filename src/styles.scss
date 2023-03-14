@@ -17,7 +17,7 @@ $cols: 12;
   }
 }
 /**
-* Flex grid system
+* Responsive Grid system
 **/
 .container {
   width: 100%;
@@ -91,4 +91,3 @@ $cols: 12;
     @include col-x-list("xl");
   }
 }
-

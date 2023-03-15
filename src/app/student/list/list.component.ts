@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._studentService.findAll()
+    this._studentService.findSimpleStudents()
       .pipe(
         take(1)
       ).subscribe((students: IStudent[]) => {
@@ -42,17 +42,30 @@ export class ListComponent implements OnInit {
   }
 
   public onSelectStudent(student: IStudent): void {
-    if (student.isSelected)
-      this.checkUncheckAll = false
-    else {
-      this.checkUncheckAll = this.students.filter((s: IStudent) => s.isSelected).length + 1 === this.students.length
+    this.checkUncheckAll = this.students.filter((s: IStudent) => s.isSelected).length === this.students.length
+
+    const checkedStudent: IStudent[] = []
+    /**
+    for (const s of this.students) {
+      if (s.isSelected) {
+        checkedStudent.push(s)
+      }
     }
+
+   this.students.forEach((s: IStudent) => {
+    if (s.isSelected) checkedStudent.push(s)
+   })
+
+    this.checkUncheckAll = checkedStudent.length === this.students.length
+    */
   }
 
   public onCheckUncheckAll(): void {
     this.students = this.students.map((s) => {
-      return {...s, isSelected: !this.checkUncheckAll}
+      return {...s, isSelected: this.checkUncheckAll}
     })
+
+    //this.students.forEach((s: IStudent) => s.isSelected = this.checkUncheckAll)
   }
 
 }

@@ -28,7 +28,7 @@ export class StudentService {
 
   public findSimpleStudents(): Observable<IStudent[]> {
     return this._httpClient.get<IStudent[]>(
-      this.endpoint
+      this.endpoint + '/simple'
     )
   }
 

@@ -8,7 +8,7 @@
   <thead>
     <tr>
       <th>
-        <input type="checkbox" [(ngModel)]="checkUncheckAll" (click)="onCheckUncheckAll()">
+        <input type="checkbox" [(ngModel)]="checkUncheckAll" (ngModelChange)="onCheckUncheckAll()">
       </th>
       <th (click)="byId()" [ngClass]="{'sorted': sortDefault === 'id'}">
         <span class="down-sort" *ngIf="sortDefault === 'id' && byIdSortOrder === 1">&gt;</span>
@@ -27,7 +27,7 @@
   <tbody *ngIf="students.length">
     <tr *ngFor="let student of students">
       <td>
-        <input type="checkbox" [(ngModel)]="student.isSelected!" (click)="onSelectStudent(student)">
+        <input type="checkbox" [(ngModel)]="student.isSelected!" (ngModelChange)="onSelectStudent(student)">
       </td>
       <td>{{ student.id }}</td>
       <td>{{ student.lastName }}</td>

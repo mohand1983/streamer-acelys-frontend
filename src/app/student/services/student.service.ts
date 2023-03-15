@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
+import { SimpleStudent } from '../types/simple-student-type';
 
 import { environment } from './../../../environments/environment'
 @Injectable({
@@ -26,8 +27,8 @@ export class StudentService {
     )
   }
 
-  public findSimpleStudents(): Observable<IStudent[]> {
-    return this._httpClient.get<IStudent[]>(
+  public findSimpleStudents(): Observable<SimpleStudent[]> {
+    return this._httpClient.get<SimpleStudent[]>(
       this.endpoint + '/simple'
     )
   }

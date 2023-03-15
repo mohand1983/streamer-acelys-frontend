@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col xs11 course-title">
+    Course List
+  </div>
+  <div class="col xs1 course-number">
+    {{ courses.length }} items
+  </div>
+</div>
+
+<ng-container *ngIf="courses.length">
+  <ng-container *ngFor="let course of courses">
+    <app-course-tile [course]="course" (onToggleCourse)="onCourseToggle($event)"></app-course-tile>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "title": "SQL",
+    "objective": "Querying and managing a Relational Database",
+    "createdAt": "2022-11-04",
+    "updatedAt": null,
+    "modules": [
+      {
+        "id": 1,
+        "name": "DDL",
+        "objective": "Use DDL to manage tables, relations, constraints, ..."
+      },
+      {
+        "id": 2,
+        "name": "DML",
+        "objective": "Use DML to add, remove, update and select datas from a RDBMS"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "UML",
+    "objective": "Use Diagram to industrialize OO code production",
+    "createdAt": "2023-10-04",
+    "updatedAt": null,
+    "modules": [
+      {
+        "id": 3,
+        "name": "Use Cases",
+        "objective": "Isolate use cases, to avoid omissions"
+      },
+      {
+        "id": 4,
+        "name": "Class Diagram",
+        "objective": "Keep an eye on your classes structure"
+      }
+    ]
+  }
+]

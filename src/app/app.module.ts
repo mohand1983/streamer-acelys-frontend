@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TileComponent } from './dashboard/components/tile/tile.component';
 import { StudentModule } from './student/student.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StudentModule } from './student/student.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StudentModule
+    StudentModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

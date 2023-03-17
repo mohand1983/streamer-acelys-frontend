@@ -6,6 +6,7 @@
     <div class="col xs1">
       {{ course.modules.length }} items
     </div>
+    <!-- Icon open / close -->
     <div class="col xs1">
       <span [ngClass]="{'icon-list': true, 'up': !course.isSelected, 'down': course.isSelected}" (click)="revealOrHide(course)">&gt;</span>
     </div>

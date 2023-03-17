@@ -4,6 +4,7 @@ import { ListComponent } from './list/list.component';
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,10 +12,7 @@ import { FormsModule } from '@angular/forms';
     ListComponent
   ],
   imports: [
-    CommonModule,
-    HttpClientModule,
-    RouterModule,
-    FormsModule
+    SharedModule
   ]
 })
 export class StudentModule { }

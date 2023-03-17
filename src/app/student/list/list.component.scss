@@ -36,10 +36,13 @@ table {
   }
   tbody {
     tr {
-      height: 2em;
+      height: 3em;
       border-bottom: solid 1px $line-color;
       &:nth-child(odd) {
         background-color: lighten($line-color, 50%);
+      }
+      td:nth-child(3) {
+        font-weight: bold;
       }
     }
   }

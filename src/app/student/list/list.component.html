@@ -15,6 +15,9 @@
         Id
         <span class="up-sort" *ngIf="sortDefault === 'id' && byIdSortOrder === -1">&lt;</span>
       </th>
+      <th>
+        Initials
+      </th>
       <th id="last-name" (click)="byLastname()" [ngClass]="{'sorted': sortDefault === 'lastName'}">
         <span class="down-sort" *ngIf="sortDefault === 'lastName' && byLastNameSortOrder === 1">&gt;</span>
         Lastname
@@ -30,7 +33,10 @@
         <input class="student-check" type="checkbox" [(ngModel)]="student.isSelected!" (ngModelChange)="onSelectStudent(student)">
       </td>
       <td>{{ student.id }}</td>
-      <td>{{ student.lastName }}</td>
+      <td>
+        {{ student | initials: {lastNameFirst: true} }}
+      </td>
+      <td>{{ student.lastName | uppercase }}</td>
       <td>{{ student.firstName }}</td>
       <td>{{ student.email }}</td>
     </tr>

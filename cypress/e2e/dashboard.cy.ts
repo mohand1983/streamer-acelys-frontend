@@ -1,4 +1,5 @@
 describe('Dashboard test', () => {
+
   it('Visits the initial project page', () => {
     cy.visit('/')
     const buttons = cy.get('button')

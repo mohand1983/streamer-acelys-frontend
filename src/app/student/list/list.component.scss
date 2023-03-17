@@ -44,6 +44,22 @@ table {
       td:nth-child(3) {
         font-weight: bold;
       }
+      td {
+        i {
+          &.bubble {
+            display: inline-block;
+            font-style: normal;
+            height: 2em;
+            width: 2em;
+            border-radius: 50%;
+            background-color: $line-color;
+            line-height: 2em;
+            vertical-align: middle;
+            text-align: center;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 }

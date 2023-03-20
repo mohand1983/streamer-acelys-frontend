@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
 import { SimpleStudent } from '../types/simple-student-type';
@@ -40,7 +40,19 @@ export class StudentService {
   public findByLoginOrEmail(email: string, login: string): void {}
 
   public add(student: IStudent): void {
-    console.log(`Controller send ${JSON.stringify(student)}`)
+    this._httpClient.post<IStudent>(
+      this.endpoint,
+      student
+    ).pipe(
+      take(1)
+    ).subscribe({
+      next: (response: IStudent) => {
+        console.log(JSON.stringify(response))
+      },
+      error: (error: any) => {
+        console.log(`Something went wrong : ${JSON.stringify(error)}`)
+      }
+    })
   }
 
   public update(student: StudentModel): void {}

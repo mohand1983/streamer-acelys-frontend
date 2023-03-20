@@ -39,20 +39,11 @@ export class StudentService {
 
   public findByLoginOrEmail(email: string, login: string): void {}
 
-  public add(student: IStudent): void {
-    this._httpClient.post<IStudent>(
+  public add(student: IStudent): Observable<any> {
+    return this._httpClient.post<IStudent>(
       this.endpoint,
       student
-    ).pipe(
-      take(1)
-    ).subscribe({
-      next: (response: IStudent) => {
-        console.log(JSON.stringify(response))
-      },
-      error: (error: any) => {
-        console.log(`Something went wrong : ${JSON.stringify(error)}`)
-      }
-    })
+    )
   }
 
   public update(student: StudentModel): void {}

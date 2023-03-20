@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
 import { SimpleStudent } from '../types/simple-student-type';
@@ -39,7 +39,12 @@ export class StudentService {
 
   public findByLoginOrEmail(email: string, login: string): void {}
 
-  public add(student: IStudent): void {}
+  public add(student: IStudent): Observable<any> {
+    return this._httpClient.post<IStudent>(
+      this.endpoint,
+      student
+    )
+  }
 
   public update(student: StudentModel): void {}
 

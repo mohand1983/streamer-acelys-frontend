@@ -75,8 +75,14 @@
                     </div>
                 </div>
             </fieldset>
+            <div class="row">
+                <div class="col xs5"></div>
+                <div class="col xs2">
+                    <button mat-raised-button color="primary" [disabled]="form.invalid">Add</button>
+                </div>
+                <div class="col xs5"></div>
+            </div>
             
-            <button mat-raised-button color="primary" [disabled]="form.invalid">Add</button>
         </form>
         {{ form.value | json }}
     </div>

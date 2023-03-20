@@ -99,3 +99,28 @@ $cols: 12;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/**
+* MatSnackBar design
+**/
+.mat-snack-bar-container {
+  &.failed {
+    background: rgba(240, 20, 0, .7);
+    .mat-simple-snack-bar-content {
+      color: rgb(10, 10, 10);
+    }
+    .mat-simple-snackbar-action {
+      color: rgb(100, 100, 100);
+    }
+  }
+
+  &.success {
+    background: rgba(20, 20, 200, .7);
+    .mat-simple-snack-bar-content {
+      color: rgb(240, 240, 240);
+    }
+    .mat-simple-snackbar-action {
+      color: rgb(240, 240, 240);
+    }
+  }
+}

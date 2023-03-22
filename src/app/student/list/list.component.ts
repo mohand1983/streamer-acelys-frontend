@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { take } from 'rxjs';
+import { StudentFormComponent } from '../dialogs/student-form/student-form.component';
 import { IStudent } from '../interfaces/i-student';
+import { StudentModel } from '../models/student-model';
 import { StudentService } from '../services/student.service';
 import { SimpleStudent } from '../types/simple-student-type';
 
@@ -18,7 +21,8 @@ export class ListComponent implements OnInit {
   public checkUncheckAll: boolean = false
 
   constructor(
-    private _studentService: StudentService
+    private _studentService: StudentService,
+    private _matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +33,26 @@ export class ListComponent implements OnInit {
         this.students = students
         this.students.sort((s1: SimpleStudent, s2: SimpleStudent) => s1.id! - s2.id!)
       })
+  }
+
+  /**
+   * Open a dialog with a form
+   */
+  public openForm(): void {
+    const dialogRef = this._matDialog.open(StudentFormComponent, {
+      width: '500px',
+      height: '700px',
+      hasBackdrop: false,
+      data: {student: new StudentModel()}
+    })
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(`Got a result, do a job`)
+      } else {
+        console.log(`No result, lunch time`)
+      }
+    })
   }
 
   public byId(): void {

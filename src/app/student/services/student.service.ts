@@ -67,5 +67,22 @@ export class StudentService {
     )
   }
 
-  public remove(student: StudentModel): void {}
+  public remove(id: number): Observable<HttpResponse<any>> {
+    return this._httpClient.delete<StudentModel>(
+      `${this.endpoint}/${id}`,
+      {
+        observe: 'response'
+      }
+    )
+  }
+
+  public removeStudents(students: Array<SimpleStudent>): Observable<Array<number>> {
+    return this._httpClient.request<Array<number>>(
+      'delete',
+      `${this.endpoint}`,
+      {
+        body: students.filter((s: SimpleStudent) => s.isSelected).map((s: SimpleStudent) => s.id)
+      }
+    )
+  }
 }

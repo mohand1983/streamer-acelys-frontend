@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { take } from 'rxjs';
@@ -19,6 +20,7 @@ export class ListComponent implements OnInit {
   public byLastNameSortOrder: number = 1
   public sortDefault: string = 'id'
   public checkUncheckAll: boolean = false
+  public checkedStudents: Array<SimpleStudent> = []
 
   constructor(
     private _studentService: StudentService,
@@ -51,6 +53,37 @@ export class ListComponent implements OnInit {
     }
   }
 
+  public delete(student: SimpleStudent): void {
+    this._studentService.remove(student.id)
+      .subscribe({
+        next: (response: HttpResponse<any>) => {
+          this.students.splice(
+            this.students.indexOf(student),
+            1
+          )
+        }
+      })
+  }
+
+  public multipleDelete(): void {
+    this._studentService.removeStudents(this.checkedStudents)
+      .pipe(
+        take(1)
+      ).subscribe((nonDeletedIds: Array<number>) => {
+        this.checkedStudents.forEach((student: SimpleStudent) => {
+          if (nonDeletedIds.filter((id: number) => id === student.id).length === 0) {
+            this.students.splice(
+              this.students.indexOf(student),
+              1
+            )
+          }
+        })
+        this.checkedStudents = []
+        this.checkUncheckAll = false
+        this.onCheckUncheckAll()
+      })
+  }
+
   public byId(): void {
     this.students.sort((s1: SimpleStudent, s2: SimpleStudent) => (s1.id! - s2.id!) * this.byIdSortOrder)
     this.byIdSortOrder = this.byIdSortOrder * -1
@@ -66,20 +99,7 @@ export class ListComponent implements OnInit {
   public onSelectStudent(student: SimpleStudent): void {
     this.checkUncheckAll = this.students.filter((s: SimpleStudent) => s.isSelected).length === this.students.length
 
-    const checkedStudent: SimpleStudent[] = []
-    /**
-    for (const s of this.students) {
-      if (s.isSelected) {
-        checkedStudent.push(s)
-      }
-    }
-
-   this.students.forEach((s: IStudent) => {
-    if (s.isSelected) checkedStudent.push(s)
-   })
-
-    this.checkUncheckAll = checkedStudent.length === this.students.length
-    */
+    this.checkedStudents = this.students.filter((s: SimpleStudent) => s.isSelected);
   }
 
   public onCheckUncheckAll(): void {
@@ -87,7 +107,7 @@ export class ListComponent implements OnInit {
       return {...s, isSelected: this.checkUncheckAll}
     })
 
-    //this.students.forEach((s: IStudent) => s.isSelected = this.checkUncheckAll)
+    this.checkedStudents = this.students.filter((s: SimpleStudent) => s.isSelected);
   }
 
   private _openDialog(student: StudentModel): void {

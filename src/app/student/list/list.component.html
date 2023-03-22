@@ -7,6 +7,16 @@
   <caption>Students - <span (click)="openForm()">Add</span></caption>
   <thead>
     <tr>
+      <th colspan="5">
+        Remove {{ this.checkedStudents.length }} of {{ this.students.length }}
+      </th>
+      <th>
+        <button mat-mini-fab color="warn" [disabled]="this.checkedStudents.length === 0" (click)="multipleDelete()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </th>
+    </tr>
+    <tr>
       <th>
         <input type="checkbox" id="check-uncheck-all" [(ngModel)]="checkUncheckAll" (ngModelChange)="onCheckUncheckAll()">
       </th>
@@ -25,6 +35,7 @@
       </th>
       <th>Firstname</th>
       <th>Email</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody *ngIf="students.length">
@@ -39,6 +50,11 @@
       <td>{{ student.lastName | uppercase }}</td>
       <td>{{ student.firstName }}</td>
       <td>{{ student.email }}</td>
+      <td>
+        <button mat-mini-fab color="warn" (click)="delete(student)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentModel } from '../models/student-model';
 
 @Injectable({
@@ -15,6 +15,10 @@ export class StudentFormService {
     this._buildForm()
   }
 
+  public get c(): {[key: string]: AbstractControl} {
+    return this._form.controls
+  }
+  
   /**
    * public façade to build a FormGroup with existent datas
    * @param student StudentModel model with hydrated datas

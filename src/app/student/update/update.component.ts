@@ -39,7 +39,7 @@ export class UpdateComponent implements OnInit {
   }
 
   get c(): {[key: string]: AbstractControl} {
-    return this.form.controls
+    return this._studentFormService.c
   }
 
   onSubmit(): void {

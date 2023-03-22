@@ -3,7 +3,7 @@ export class StudentModel {
   private _lastName: string = ''
   private _firstName?: string = ''
   private _email: string = ''
-  private _phoneNumber?: string
+  private _phoneNumber?: string = ''
   private _login: string = ''
   private _password: string = ''
 

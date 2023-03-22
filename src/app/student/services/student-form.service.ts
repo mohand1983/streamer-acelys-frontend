@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
 import { StudentService } from './student.service';
@@ -57,6 +57,9 @@ export class StudentFormService {
       this._student.login = this.c['login'].value
       this._student.password = this.c['password'].value
       return this._studentService.update(this._student)
+        .pipe(
+          map(_ => this._student)
+        )
     }
 
     const student: IStudent = {

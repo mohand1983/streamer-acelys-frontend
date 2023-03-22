@@ -100,7 +100,27 @@ export class ListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: any) => { // student was received from dialog
       if (result) {
-        console.log(`Got a result, do a job`)
+        // Convert StudentModel to SimpleStudent (or IStudent)
+        const simpleStudent: SimpleStudent = {
+          id: result.id,
+          lastName: result.lastName,
+          firstName: result.firstName,
+          email: result.email,
+          isSelected: false
+        }
+        // if student already exists in students : replace it
+        const index: number = this.students.findIndex((student: SimpleStudent) => student.id === simpleStudent.id)
+        if (index > -1) {
+          this.students.splice(
+            index,
+            1,
+            simpleStudent
+          )
+        } else {
+          this.students.push(simpleStudent)
+        }
+        // else add it (and re sort table)
+        this.students.sort((s1: SimpleStudent, s2: SimpleStudent) => s1.id - s2.id)
       } else {
         console.log(`No result, lunch time`)
       }

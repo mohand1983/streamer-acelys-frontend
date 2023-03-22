@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { InitialsPipe } from './pipes/initials.pipe';
 import { AddComponent } from './add/add.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
   declarations: [
     ListComponent,
     InitialsPipe,
-    AddComponent
+    AddComponent,
+    UpdateComponent
   ],
   imports: [
     SharedModule

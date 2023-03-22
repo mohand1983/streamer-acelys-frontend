@@ -34,7 +34,10 @@
       </td>
       <td>{{ student.id }}</td>
       <td>
-        <i class="bubble">{{ student | initials: {lastNameFirst: true} }}</i>
+        <!-- Anchor to UpdateComponent with the correct id -->
+        <a [routerLink]="['/', 'student', student.id, 'update']">
+          <i class="bubble">{{ student | initials: {lastNameFirst: true} }}</i>
+        </a>
       </td>
       <td>{{ student.lastName | uppercase }}</td>
       <td>{{ student.firstName }}</td>

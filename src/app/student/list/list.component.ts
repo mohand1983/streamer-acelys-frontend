@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
+import { IStudent } from '../interfaces/i-student';
 import { StudentService } from '../services/student.service';
 import { SimpleStudent } from '../types/simple-student-type';
 
@@ -26,6 +27,7 @@ export class ListComponent implements OnInit {
         take(1)
       ).subscribe((students: SimpleStudent[]) => {
         this.students = students
+        this.students.sort((s1: SimpleStudent, s2: SimpleStudent) => s1.id! - s2.id!)
       })
   }
 

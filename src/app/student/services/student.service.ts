@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, take } from 'rxjs';
+import { map, Observable, take, tap } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
 import { SimpleStudent } from '../types/simple-student-type';
@@ -33,7 +33,18 @@ export class StudentService {
     )
   }
 
-  public findOne(id: number): void {}
+  public findOne(id: number): Observable<StudentModel> {
+    return this._httpClient.get<any>(
+      this.endpoint + '/' + id
+    )
+    .pipe(
+      tap((response: any) => {
+        console.log(JSON.stringify(response))
+      }),
+      take(1),
+      map((student: any) => student)
+    )
+  }
 
   public findByEmail(email: string): void {}
 
@@ -46,7 +57,15 @@ export class StudentService {
     )
   }
 
-  public update(student: StudentModel): void {}
+  public update(student: StudentModel): Observable<HttpResponse<any>> {
+    return this._httpClient.put<StudentModel>(
+      this.endpoint,
+      student,
+      {
+        observe: 'response'
+      }
+    )
+  }
 
   public remove(student: StudentModel): void {}
 }

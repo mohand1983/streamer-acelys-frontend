@@ -37,22 +37,18 @@ export class ListComponent implements OnInit {
 
   /**
    * Open a dialog with a form
+   * if a SimpleStudent was passed, get whole student from service before open dialog
+   * @todo Keep dialogRef instance avoiding open multiple dialogs
    */
-  public openForm(): void {
-    const dialogRef = this._matDialog.open(StudentFormComponent, {
-      width: '500px',
-      height: '700px',
-      hasBackdrop: false,
-      data: {student: new StudentModel()}
-    })
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        console.log(`Got a result, do a job`)
-      } else {
-        console.log(`No result, lunch time`)
-      }
-    })
+  public openForm(student: SimpleStudent | null = null): void {
+    if (!student) {
+      this._openDialog(new StudentModel())
+    } else {
+      this._studentService.findOne(student.id)
+        .subscribe((completeStudent: StudentModel) => {
+          this._openDialog(completeStudent)
+        })
+    }
   }
 
   public byId(): void {
@@ -94,4 +90,20 @@ export class ListComponent implements OnInit {
     //this.students.forEach((s: IStudent) => s.isSelected = this.checkUncheckAll)
   }
 
+  private _openDialog(student: StudentModel): void {
+    const dialogRef = this._matDialog.open(StudentFormComponent, {
+      width: '500px',
+      height: '500px',
+      hasBackdrop: false,
+      data: {student} // student is passed to dialog => {student: student}
+    })
+
+    dialogRef.afterClosed().subscribe((result: any) => { // student was received from dialog
+      if (result) {
+        console.log(`Got a result, do a job`)
+      } else {
+        console.log(`No result, lunch time`)
+      }
+    })
+  }
 }

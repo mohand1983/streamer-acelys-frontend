@@ -48,7 +48,10 @@ export class StudentFormComponent implements OnInit {
    * Event triggered if user click on Yes button
    */
   public onSubmit(): void {
-    this.dialogRef.close(this._student)
+    this._studentFormService.onSubmit()
+      .subscribe((student: StudentModel) => {
+        this.dialogRef.close(student)
+      })
   }
 
 }

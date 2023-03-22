@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { ToastService } from 'src/app/core/toast.service';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
+import { StudentFormService } from '../services/student-form.service';
 import { StudentService } from '../services/student.service';
 
 @Component({
@@ -17,45 +18,14 @@ export class AddComponent implements OnInit {
   public student: StudentModel = new StudentModel()
    
   constructor(
-    private _formBuilder: FormBuilder,
+    private _formService: StudentFormService,
     private _service: StudentService,
     private _snackBar: ToastService,
     private _router: Router
   ) { }
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      lastName: [
-        '', // Default value
-        [
-          Validators.required
-        ] // Validators function to add to this field
-      ],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-        ]
-      ],
-      firstName: [''],
-      phoneNumber: [''],
-      login: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8)
-        ]
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
-        ]
-      ]
-    })
+    this.form = this._formService.form
   }
 
   public get c(): {[key: string]: AbstractControl} {

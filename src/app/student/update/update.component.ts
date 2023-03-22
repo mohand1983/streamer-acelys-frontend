@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { StudentModel } from '../models/student-model';
+import { StudentFormService } from '../services/student-form.service';
 import { StudentService } from '../services/student.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class UpdateComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _service: StudentService,
-    private _formBuilder: FormBuilder
+    private _studentFormService: StudentFormService
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +29,8 @@ export class UpdateComponent implements OnInit {
       .subscribe({
         next: (student: StudentModel) => {
           this.student = student
-          this._buildForm()
+          this._studentFormService.buildForm(this.student)
+          this.form = this._studentFormService.form
         },
         error: (error: any) => {
           console.log('Something went wrong')
@@ -57,40 +59,5 @@ export class UpdateComponent implements OnInit {
           console.log(JSON.stringify(error))
         }
       })
-  }
-
-  private _buildForm(): void {
-    this.form = this._formBuilder.group({
-      lastName: [
-        this.student!.lastName, // Default value
-        [
-          Validators.required
-        ] // Validators function to add to this field
-      ],
-      email: [
-        this.student!.email,
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-        ]
-      ],
-      firstName: [this.student!.firstName],
-      phoneNumber: [this.student!.phoneNumber],
-      login: [
-        this.student!.login,
-        [
-          Validators.required,
-          Validators.minLength(8)
-        ]
-      ],
-      password: [
-        this.student!.password,
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
-        ]
-      ]
-    })
   }
 }

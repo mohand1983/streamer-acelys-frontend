@@ -11,6 +11,8 @@ import { StudentFormService } from '../../services/student-form.service';
 })
 export class StudentFormComponent implements OnInit {
 
+  public okButtonLabel: string = 'Add'
+
   public form: FormGroup = new FormGroup({})
 
   private _student: StudentModel
@@ -21,6 +23,9 @@ export class StudentFormComponent implements OnInit {
     private _studentFormService: StudentFormService
   ) { 
     this._student = this.data.student
+    if (this._student.id) {
+      this.okButtonLabel = 'Update'
+    }
   }
 
   ngOnInit(): void {

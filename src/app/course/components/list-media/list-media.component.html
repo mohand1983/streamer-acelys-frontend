@@ -1,5 +1,6 @@
-<ul class="media-list">
-    <li *ngFor="let media of medias">
-      {{ media.title }}
-    </li>
-  </ul>
+<div class="col xs12 media">
+    <div class="row" *ngFor="let media of medias">
+        <div class="col xs6">{{ media.title }}</div>
+        <div class="col xs6">{{ media.duration }}</div>
+    </div>
+</div>

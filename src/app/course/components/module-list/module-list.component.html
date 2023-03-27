@@ -1,6 +1,14 @@
-<ul class="module-list">
-  <li *ngFor="let module of modules">
-    {{ module.name }}
-    <app-list-media   [medias]="module.medias"></app-list-media>
-  </li>
-</ul>
+<div class="col xs12 module" *ngFor="let module of modules">
+  <div class="row">
+    <div id="module" class="col xs10">
+      {{ module.name }}
+    </div>
+    <div class="col xs1">
+      {{module.medias.length}} items
+    </div>
+    <div class="col xs1">
+      <span>&gt;</span>
+    </div>
+  </div>
+  <app-list-media [medias]="module.medias"></app-list-media>
+</div>

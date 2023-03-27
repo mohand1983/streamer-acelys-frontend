@@ -6,13 +6,15 @@ import { SharedModule } from '../shared/shared.module';
 import { ListComponent } from './list/list.component';
 import { CourseTileComponent } from './components/course-tile/course-tile.component';
 import { ModuleListComponent } from './components/module-list/module-list.component';
+import { ListMediaComponent } from './components/list-media/list-media.component';
 
 
 @NgModule({
   declarations: [
     ListComponent,
     CourseTileComponent,
-    ModuleListComponent
+    ModuleListComponent,
+    ListMediaComponent
   ],
   imports: [
     SharedModule,

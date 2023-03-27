@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MediaType } from '../../types/media-type';
 
 @Component({
   selector: 'app-list-media',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-media.component.scss']
 })
 export class ListMediaComponent implements OnInit {
+  @Input() medias: MediaType[] = []
 
   constructor() { }
 

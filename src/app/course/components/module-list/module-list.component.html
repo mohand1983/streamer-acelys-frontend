@@ -1,5 +1,6 @@
 <ul class="module-list">
   <li *ngFor="let module of modules">
     {{ module.name }}
+    <app-list-media   [medias]="module.medias"></app-list-media>
   </li>
 </ul>

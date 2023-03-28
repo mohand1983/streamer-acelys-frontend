@@ -7,6 +7,7 @@ import { ListComponent } from './list/list.component';
 import { CourseTileComponent } from './components/course-tile/course-tile.component';
 import { ModuleListComponent } from './components/module-list/module-list.component';
 import { ListMediaComponent } from './components/list-media/list-media.component';
+import { AddComponent } from './add/add.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ListMediaComponent } from './components/list-media/list-media.component
     ListComponent,
     CourseTileComponent,
     ModuleListComponent,
-    ListMediaComponent
+    ListMediaComponent,
+    AddComponent
   ],
   imports: [
     SharedModule,

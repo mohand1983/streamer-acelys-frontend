@@ -10,6 +10,7 @@
     {{ courses.length }} items
   </div>
 </div>
+<button mat-button color="primary" [routerLink]="['/addComponent']">Ajouter un cours</button>
 
 <ng-container *ngIf="courses.length">
   <ng-container *ngFor="let course of courses">

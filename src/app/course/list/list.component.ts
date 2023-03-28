@@ -36,4 +36,9 @@ export class ListComponent implements OnInit {
       })
     }
   }
+
+
+  ajouterUnCours(){
+    
+  }
 }

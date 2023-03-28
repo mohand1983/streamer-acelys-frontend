@@ -1,7 +1,8 @@
 <div class="col xs12 media">
     <div class="row" *ngFor="let media of medias">
-        <div class="col xs4"></div>
-        <div class="col xs4">{{ media.title }}</div>
-        <div class="col xs4">{{ media.duration }}</div>
+        <div class="col xs2"></div>
+        <div class="col xs3">{{ media.title }}</div>
+        <div class="col xs3">{{ media.duration }}</div>
+        <div class="col xs3">{{ media.typeMedia.title}}</div>
     </div>
 </div>

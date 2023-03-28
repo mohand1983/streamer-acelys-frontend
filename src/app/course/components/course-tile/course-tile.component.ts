@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CourseListType } from '../../types/course-list-type';
+import { MediaType } from '../../types/media-type';
 
 @Component({
   selector: 'app-course-tile',
@@ -9,6 +10,7 @@ import { CourseListType } from '../../types/course-list-type';
 export class CourseTileComponent implements OnInit {
   @Input() public course!: CourseListType
   @Output() public onToggleCourse: EventEmitter<CourseListType> = new EventEmitter()
+  @Input() medias: MediaType[] = []
 
   constructor() { }
 

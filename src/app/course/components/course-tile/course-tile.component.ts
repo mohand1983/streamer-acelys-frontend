@@ -39,6 +39,7 @@ export class CourseTileComponent implements OnInit {
    * @param  Delete student method
    */
   public RemoveCourse(c: CourseListType) {
+    
     //console.log("ok")
     this._courseService.delete(c.id!)
       .subscribe({

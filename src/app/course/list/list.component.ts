@@ -42,29 +42,5 @@ export class ListComponent implements OnInit {
   }
 
 
-  //Remove method course
-  RemoveCourse(){
-    confirm("êtes vous sûr de supprimer le cours?")
-  }
 
-  /**
-   * 
-   * @param  Delete student method
-   */
-  public deleteStudent(c: CourseListType) {
-    this._courseService.delete(c.id!)
-      .subscribe({
-        next: (response: HttpResponse<any>) => {
-          this.courses.splice(
-            this.courses.indexOf(c),
-            1
-          )
-
-        },
-        error: (err) => {
-          this.errorMessage = err;
-        }
-
-      })
-  }
 }

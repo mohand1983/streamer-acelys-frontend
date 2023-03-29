@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CourseListType } from '../types/course-list-type';
@@ -25,6 +25,23 @@ export class CourseService {
     )
   }
 
+
+  public remove(id: number): Observable<HttpResponse<any>> {
+    return this._httpClient.delete<CourseType>(
+      `${this.endPoint}/${id}`,
+      {
+        observe: 'response'
+      }
+    )
+  }
+  
+  public delete(id: number): Observable<HttpResponse<any>> {
+    return this._httpClient.delete<CourseType>(
+      `${this.endPoint}/${id}`,
+      {
+        observe: 'response'
+      })
+  }
 
 
 }

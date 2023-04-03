@@ -2,7 +2,6 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CourseService } from '../../services/course.service';
 import { CourseListType } from '../../types/course-list-type';
-import { CourseType } from '../../types/course-type';
 import { MediaType } from '../../types/media-type';
 
 @Component({

@@ -31,7 +31,7 @@ export class ListComponent implements OnInit {
   }
 
   onCourseToggle(course: CourseListType): void {
-    console.log(`Course was toggled ${course.isSelected ? 'close all but me' : 'close me'}`)
+    //console.log(`Course was toggled ${course.isSelected ? 'close all but me' : 'close me'}`)
     if (course.isSelected) {
       this.courses.filter((inCourse: CourseListType) => inCourse.isSelected).forEach((inCourse: CourseListType) => {
         if (course.id !== inCourse.id) {

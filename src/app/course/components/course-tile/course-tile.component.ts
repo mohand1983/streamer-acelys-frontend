@@ -2,6 +2,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CourseService } from '../../services/course.service';
 import { CourseListType } from '../../types/course-list-type';
+import { CourseType } from '../../types/course-type';
 import { MediaType } from '../../types/media-type';
 
 @Component({
@@ -11,10 +12,11 @@ import { MediaType } from '../../types/media-type';
 })
 export class CourseTileComponent implements OnInit {
   @Input() public course!: CourseListType
-  @Output() public onToggleCourse: EventEmitter<CourseListType> = new EventEmitter()
+  @Output() public onToggle: EventEmitter<boolean> = new EventEmitter()
   @Input() medias: MediaType[] = []
   public courses: Array<CourseListType> = []
   errorMessage!: string;
+  @Output() onToggleCourse: EventEmitter<CourseListType> = new EventEmitter();
 
   constructor(private _courseService: CourseService) { }
 
@@ -25,6 +27,11 @@ export class CourseTileComponent implements OnInit {
     course.isSelected = !course.isSelected
     console.log(`Course was toggled : ${course.isSelected}`)
     this.onToggleCourse.emit(course)
+  }
+
+  public toggle(courseStatus: boolean): void{
+    this.course.isSelected=courseStatus
+    this.onToggleCourse.emit(this.course)
   }
 
 

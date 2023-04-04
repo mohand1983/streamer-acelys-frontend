@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 const users: Array<any> = [
   {
     login: 'user1',
@@ -9,6 +10,7 @@ const users: Array<any> = [
     password: '12345'
   }
 ]
+
 
 @Injectable({
   providedIn: 'root'

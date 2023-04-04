@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddComponent } from './student/add/add.component';
 import { ListComponent } from './student/list/list.component';
 import { UpdateComponent } from './student/update/update.component';
+import { AuthGuard } from './user/guards/auth.guard';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes)],
@@ -17,24 +18,29 @@ export class AppRoutingModule {
       pathMatch: 'full' // Mean Angular read the whole URI instead of first matching occ
     },
     {
-      path: 'dashboard',
+      path: 'dashboard', 
+      canActivate:[AuthGuard],
       component: DashboardComponent
     },
     {
       path: 'student/list',
+      canActivate:[AuthGuard],
       component: ListComponent
     },
     {
       path: 'student/add',
+      canActivate:[AuthGuard],
       component: AddComponent
     },
     {
       path: 'student/:id/update', // :id => sera remplacé par l'ID d'un Student à l'exécution
+      canActivate:[AuthGuard],
       component: UpdateComponent
     },
     {
       path: 'course',
-      loadChildren: () => import('./course/course.module').then((m) => m.CourseModule)
+      loadChildren: () => import('./course/course.module').then((m) => m.CourseModule),
+      canActivate:[AuthGuard],
     },
     {
       path: 'user',

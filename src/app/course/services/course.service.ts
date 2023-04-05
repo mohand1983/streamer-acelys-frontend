@@ -18,10 +18,10 @@ export class CourseService {
     )
   }
 
-  public add(Course: CourseType): Observable<any> {
+  public add(course: CourseType): Observable<any> {
     return this._httpClient.post<CourseType>(
       this.endPoint,
-      Course
+      course
     )
   }
 

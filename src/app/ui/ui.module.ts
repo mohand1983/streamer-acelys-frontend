@@ -9,6 +9,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu'; 
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 @NgModule({
   declarations: [],
   imports: [
@@ -27,6 +28,7 @@ export class UiModule {
     MatSnackBarModule,
     MatDialogModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule
   ]
 }

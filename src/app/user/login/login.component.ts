@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({})
   public showPassword: boolean = false
+  public checked:boolean=false
 
   constructor(
     private _userService: UserService,
@@ -41,5 +42,13 @@ export class LoginComponent implements OnInit {
       this.form.controls['password'].setValue('')
       // Maybe a toast, more user friendly ?
     }
+  }
+  public ResterConnect(): void {
+    if(this.checked==true){
+      this._userService.authenticate
+    }else{
+    
+    }
+
   }
 }

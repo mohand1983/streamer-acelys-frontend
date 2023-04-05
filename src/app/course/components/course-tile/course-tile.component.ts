@@ -42,7 +42,7 @@ export class CourseTileComponent implements OnInit {
 
   /**
    * 
-   * @param  Delete student method
+   * @param  Delete course method          
    */
   public RemoveCourse(c: CourseListType) {
     
